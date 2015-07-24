@@ -39,7 +39,11 @@ def ReadRemarks(user_id):
     color = ('#%02X%02X%02X' % (r(),r(),r()))
     remarks.append((remark.user, remark.text, color))
 
-  return remarks
+  return [
+      (remark.user, remark.text, 'black')
+      for remark
+      in Remark.query(
+          Remark.timestamp >= start_time).order(Remark.timestamp).fetch()]
 
 
 def PostRemark(user, text):
