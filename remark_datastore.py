@@ -40,7 +40,7 @@ def ReadRemarks(user_id):
     remarks.append((remark.user, remark.text, color))
 
   return [
-      (remark.user, remark.text, 'black')
+      (remark.user, remark.text, color)
       for remark
       in Remark.query(
           Remark.timestamp >= start_time).order(Remark.timestamp).fetch()]
